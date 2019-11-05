@@ -1,0 +1,59 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    // Complete the repeatedString function below.
+    static long repeatedString(String s, long n) {
+        long q=n/s.length();
+        long r=n%s.length();
+        if(!s.contains("a"))
+        return 0;
+        if(s.length()>n)
+        {
+           return count(s,r);
+        }
+        else
+        {
+            return q*count(s,s.length())+ count(s,r);
+        }
+    }
+
+     static  long count(String s,long e)
+        {
+            long a=0;
+            for(int i=0;i<e;i++)
+            {
+                if(s.charAt(i)=='a')
+                a++;
+            }
+            return a;
+        }
+
+    
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = scanner.nextLine();
+
+        long n = scanner.nextLong();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        long result = repeatedString(s, n);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }
+}
