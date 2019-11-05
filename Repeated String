@@ -7,8 +7,7 @@ import java.util.concurrent.*;
 import java.util.regex.*;
 
 public class Solution {
-
-    // Complete the repeatedString function below.
+/*We check given character occurance in string and multiply with n divided by length and check for remainder length if any*/
     static long repeatedString(String s, long n) {
         long q=n/s.length();
         long r=n%s.length();
